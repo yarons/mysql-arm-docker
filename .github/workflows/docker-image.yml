@@ -53,4 +53,4 @@ jobs:
           #docker buildx rm builder
           docker buildx create --name builder --driver docker-container --use
           docker buildx inspect --bootstrap
-          docker buildx build --platform=linux/arm64 . --file Dockerfile --tag $IMAGE_ID --push --label "runnumber=${GITHUB_RUN_ID}"
+          docker buildx build --platform=linux/arm64/v8 . --file Dockerfile --tag $IMAGE_ID --push --label "runnumber=${GITHUB_RUN_ID}"
