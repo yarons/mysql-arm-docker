@@ -87,6 +87,7 @@ RUN { \
 #	&& apt-get update \
 	&& rm -vf /var/lib/apt/lists/* \
 	&& dpkg -i /install/* \
+	&& rm -rf /install \
 #	&& apt-get install -y \
 #		mysql-server="${MYSQL_VERSION}" \
 # comment out a few problematic configuration values
@@ -105,7 +106,7 @@ VOLUME /var/lib/mysql
 
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh \ 
-    && chmod +x /usr/local/bin/entrypoint.sh # backwards compat + permission fix
+    && chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 3306 33060
