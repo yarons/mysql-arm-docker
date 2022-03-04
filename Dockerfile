@@ -104,8 +104,8 @@ RUN { \
 VOLUME /var/lib/mysql
 
 COPY docker-entrypoint.sh /usr/local/bin/
-RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh \ # backwards compat
-    && chmod +x /usr/local/bin/entrypoint.sh
+RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh \ 
+    && chmod +x /usr/local/bin/entrypoint.sh # backwards compat + permission fix
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 3306 33060
